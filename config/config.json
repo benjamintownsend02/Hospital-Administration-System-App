@@ -3,6 +3,7 @@
     "username": "root",
     "password": null,
     "database": "medicaldb",
+
     "host": "localhost",
     "dialect": "mysql"
   },
