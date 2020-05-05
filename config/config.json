@@ -1,8 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
-    "database": "test",
+    "password": null,
+    "database": "medicaldb",
+
     "host": "localhost",
     "dialect": "mysql"
   },
