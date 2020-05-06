@@ -43,6 +43,11 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/logout", function(req, res) {
+    res.set("WWW-Authenticate", "Basic realm='401'");
+    res.status(401).send("Authentication required.");
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

@@ -8,11 +8,31 @@ var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
+//TODO: Fix? or Remove after Testing
+/*
+var credentials = { admin: "guest" };
 
+var currentUserID="";
+*/
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+//TODO: Remove when done testing
+//TODO: FIX?
+/*
+app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
+function myAuthorizer(username, password) {
+  console.log(credentials[username]);
+  var userMatches = credentials[username];
+  var passwordMatches = basicAuth.safeCompare(password, credentials[username]);
+  if (userMatches && passwordMatches) {
+    return true;
+  }
+  return false;
+}
+*/
 
 app.use(
   basicAuth({
@@ -26,6 +46,16 @@ app.use(
   })
 );
 
+//TODO: Remove when done testing
+/*
+function getUnauthorizedResponse(req) {
+  //TODO: Remove console log after testing
+  console.log(req);
+  return req.auth
+    ? "Credentials " + req.auth.user + ":" + req.auth.password + " rejected"
+    : "No credentials provided";
+}
+*/
 // Handlebars
 app.engine(
   "handlebars",
