@@ -1,22 +1,45 @@
-var db = require("../models");
+var medicaldb = require("../models");
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
+    res.render("login");
+  });
+
+  //Display all patients
+  app.get("/search", function(req, res) {
+    medicaldb.Patient.findAll({}).then(function(results) {
+      var hbsObject = {
+        patients: results
+      };
+      res.render("search", hbsObject);
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
+  //Display patient data by name
+  app.get("/search/:name", function(req, res) {
+    medicaldb.Patient.findAll({ where: { id: req.params.id } }).then(function(
+      results
+    ) {
+      var hbsObject = {
+        patients: results
+      };
+      res.render("search", hbsObject);
+    });
+  });
+
+  //Display patient data
+  app.get("/displayrec/", function(req, res) {
+    res.render("displayrec");
+  });
+
+  //Display patient data by ID
+  app.get("/displayrec/:id", function(req, res) {
+    medicaldb.Patient.findOne({ where: { id: req.params.id } }).then(function(
+      results
+    ) {
+      var hbsObject = { patients: results };
+      res.render("displayrec", hbsObject);
     });
   });
 
