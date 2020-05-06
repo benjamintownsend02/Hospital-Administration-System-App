@@ -2,6 +2,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var basicAuth = require("express-basic-auth");
 // Test
 var db = require("./models");
 
@@ -12,6 +13,18 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+app.use(
+  basicAuth({
+    users: {
+      admin: "guest",
+      JDeer: "12345",
+      MRose: "Password123",
+      LMan: "TurtlesAllTheWayDown"
+    },
+    challenge: true
+  })
+);
 
 // Handlebars
 app.engine(
