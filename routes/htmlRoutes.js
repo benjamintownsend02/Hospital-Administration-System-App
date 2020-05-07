@@ -33,6 +33,11 @@ module.exports = function(app) {
     res.render("displayrec");
   });
 
+  //Display add patient page
+  app.get("/addpatient/", function(req, res) {
+    res.render("addpatient");
+  });
+
   //Display patient data by ID
   app.get("/displayrec/:id", function(req, res) {
     medicaldb.Patient.findOne({ where: { id: req.params.id } }).then(function(
