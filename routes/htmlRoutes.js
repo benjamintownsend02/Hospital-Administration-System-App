@@ -16,6 +16,16 @@ module.exports = function(app) {
     });
   });
 
+  // Testing searchby method...
+  app.get("/searchby", function(req, res) {
+    medicaldb.Patient.findAll({}).then(function(results) {
+      var hbsObject = {
+        patients: results
+      };
+      res.render("searchby", hbsObject);
+    });
+  });
+
   //Display patient data by name
   app.get("/search/:name", function(req, res) {
     medicaldb.Patient.findAll({ where: { name: req.params.name } }).then(function(
