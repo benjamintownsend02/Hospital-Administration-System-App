@@ -1,5 +1,8 @@
 var medicaldb = require("../models");
 
+const {Op}  = require('sequelize');
+
+
 module.exports = function(app) {
   //Get all patients
   app.get("/api/patients", function(req, res) {
@@ -9,8 +12,8 @@ module.exports = function(app) {
   });
 
   //Get patient by id
-  app.get("/api/patients/:id", function(req, res) {
-    medicaldb.Patient.findOne({ where: { id: req.params.name } }).then(function(
+  app.get("/api/patients/id/:id", function(req, res) {
+    medicaldb.Patient.findOne({ where: { id: req.params.id } }).then(function(
       results
     ) {
       res.json(results);
@@ -18,7 +21,7 @@ module.exports = function(app) {
   });
 
   // Get patients by name
-  app.get("/api/patients/:name", function(req, res) {
+  app.get("/api/patients/name/:name", function(req, res) {
     medicaldb.Patient.findAll({
       where: {
         name: req.params.name
@@ -29,7 +32,7 @@ module.exports = function(app) {
   });
 
   // Get patients by doctorId
-  app.get("/api/patients/:doctorId", function(req, res) {
+  app.get("/api/patients/doctorId/:doctorId", function(req, res) {
     medicaldb.Patient.findAll({
       where: {
         doctorId: req.params.doctorId
@@ -39,8 +42,23 @@ module.exports = function(app) {
     });
   });
 
+
+  //Get patients by doctorId and patient name
+  app.get("/api/patients/doctorIdAndName/:doctorId/:name", function(req, res) {
+    medicaldb.Patient.findAll({
+      where: {
+        [Op.and]: [
+          { doctorId: req.params.doctorId },
+          { name: req.params.name }
+        ]
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
   //Get doctors by name
-  app.get("/api/doctors/:name", function(req, res) {
+  app.get("/api/doctors/name/:name", function(req, res) {
     medicaldb.Doctor.findAll({ where: { name: req.params.name } }).then(
       function(results) {
         res.json(results);
@@ -49,8 +67,8 @@ module.exports = function(app) {
   });
 
   //Get doctor by ID
-  app.get("/api/doctors/:id", function(req, res) {
-    medicaldb.Doctor.findOne({ where: { id: req.params.name } }).then(function(
+  app.get("/api/doctors/id/:id", function(req, res) {
+    medicaldb.Doctor.findOne({ where: { id: req.params.id } }).then(function(
       results
     ) {
       res.json(results);
