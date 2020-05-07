@@ -1,37 +1,43 @@
 <div class="jumbotron jumbotron-fluid bg-secondary">
-        <div class="container">
-          <h1 class="display-4 text-center">Welcome to the main page<h1 id="doctor"></h1></h1>
-          <p class="lead text-white text-left">Search for a patient</p>
-          
-          <nav class="navbar navbar-light bg-secondary">
-            <form class="form-inline">
-             
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <button class="btn btn-primary mr-sm-5"  type="submit" id="searchDB">Search</button>
-              <div class="dropdown">
-               
-                <div class="form-group">   
-                    <select class="form-control" id="patientSearch">
-                    <option selected>Choose an search</option>
-                      <option value="1">Search patients by id</option>
-                      <option value="2">Search patients by doctor id</option>
-                      <option value="3">Search patients by name</option>   
-                    </select>
-                  </div>
-              </div>    
-            </form>
-                <form class="form-inline">
-                    <button class="btn btn-success" type="submit" id="addNewPatient">Add a new patient</button>
-                      </form>
-                    </nav>
+
+  <div class="nav">
+    <ul class="nav-item">
+      <a class="nav-link active" href="#"> Log out</a>
+    </ul>
+  </div>
+  <div class="container">
+    <h1 class="display-4 text-center">Welcome to the main page<h1 id="doctor"></h1>
+    </h1>
+    <p class="lead text-white text-left">Search for a patient</p>
+
+    <nav class="navbar navbar-light bg-secondary">
+      <form class="form-inline">
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary mr-sm-5" type="submit" id="searchDB">Search</button>
+        <div class="dropdown">
+
+          <div class="form-group">
+            <select class="form-control" id="patientSearch">
+              <option selected>Choose an search</option>
+              <option class="searchPatientById">Search patients by id</option>
+              <option class="searchPatientByDoctorId">Search patients by doctor id</option>
+              <option class="searchPatientByName">Search patients by name</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <table class="table">
-          <thead class ="thead-dark" id="patientDb">
+      </form>
+      <form class="form-inline">
+        <button class="btn btn-success" type="submit" id="addNewPatient">Add a new patient</button>
+      </form>
+    </nav>
+  </div>
+</div>
+<table class="table">
+  <thead class="thead-dark" id="patientDb">
 
-          </thead>
+  </thead>
 
-      </table>
+</table>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+       
