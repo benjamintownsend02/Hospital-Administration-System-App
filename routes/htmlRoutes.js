@@ -17,14 +17,14 @@ module.exports = function(app) {
   });
 
   //Display patient data by name
-  app.get("/search/name/:name", function(req, res) {
-    medicaldb.Patient.findAll({ where: { id: req.params.id } }).then(function(
+  app.get("/search/:name", function(req, res) {
+    medicaldb.Patient.findAll({ where: { name: req.params.name } }).then(function(
       results
     ) {
       var hbsObject = {
         patients: results
       };
-      res.render("search", hbsObject);
+      res.render("displayrec", hbsObject);
     });
   });
 
@@ -35,9 +35,10 @@ module.exports = function(app) {
       var hbsObject = {
         patients: results
       };
-      res.render("search", hbsObject);
+      res.render("displayrec", hbsObject);
     });
   });
+
 
   //Display patient data
   app.get("/displayrec/", function(req, res) {
