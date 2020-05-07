@@ -1,10 +1,12 @@
 $(document).ready(function () {
 
     // main page add patient
+
     $("searchp").on("click", function () {
         // go to search page
         return $.ajax({
             url: "api/search",
+
             type: "GET"
 
         })
@@ -12,8 +14,10 @@ $(document).ready(function () {
     })
 
 
+
     // Search Patient by Name
     $("placeholder").on("click", function () {
+
 
         var patientName = $("placeholder").val().trim();
 
@@ -25,4 +29,6 @@ $(document).ready(function () {
     })
 
 
+
 });
+

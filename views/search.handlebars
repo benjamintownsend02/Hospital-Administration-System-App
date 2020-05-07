@@ -1,6 +1,8 @@
 <div class="jumbotron jumbotron-fluid bg-secondary">
 
+
   {{!-- Logout Button --}}
+
   <div class="nav">
     <ul class="nav-item">
       <a class="nav-link active" href="#"> Log out</a>
@@ -15,16 +17,20 @@
     <nav class="navbar navbar-light bg-secondary">
       <form class="form-inline">
 
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+
+        <input class="form-control mr-sm-2" id="inputSearch" type="text" placeholder="Search" aria-label="Search">
+
         <button class="btn btn-primary mr-sm-5" type="submit" id="searchDB">Search</button>
         <div class="dropdown">
 
           <div class="form-group">
             <select class="form-control" id="patientSearch">
               <option selected>Choose an search</option>
-              <option class="searchPatientById">Search patients by id</option>
-              <option class="searchPatientByDoctorId">Search patients by doctor id</option>
-              <option class="searchPatientByName">Search patients by name</option>
+
+              <option value="1">Search patients by id</option>
+              <option value="2">Search patients by doctor id</option>
+              <option value="3">Search patients by name</option>
+
             </select>
           </div>
         </div>
@@ -41,3 +47,49 @@
   </thead>
 
 </table>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript">
+
+  $( document ).ready( function ()
+  {
+
+
+    $( "#searchDB" ).on( "click", function ()
+    {
+      event.preventDefault()
+
+
+      var searchType = $( "#patientSearch" ).val();
+      console.log( "Search Type ", searchType )
+      if ( searchType === "1" )
+      {
+        patientId = $( "#inputSearch" ).val().trim();
+        console.log( "PatientID ", patientId )
+        location.replace( '/displayrec/id/' + patientId )
+
+      } else if ( searchType === "2" )
+      {
+        var doctorId = $( "#inputSearch" ).val().trim();
+        console.log( "Doc ID ", doctorId )
+        location.replace( "/search/doctorId/" + doctorId )
+      } else if ( searchType === "3" )
+      {
+        var patientName = $( "#inputSearch" ).val();
+        console.log( "Doc ID ", patientName )
+        location.replace( "/search/" + patientName )
+      } else
+      {
+        console.log( "Its not working" )
+      }
+
+
+    } )
+  } )
+
+</script>
+
+
