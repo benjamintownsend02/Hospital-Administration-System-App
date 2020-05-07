@@ -24,10 +24,17 @@ app.use(express.static("public"));
 /*
 app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 function myAuthorizer(username, password) {
-  console.log(credentials[username]);
-  var userMatches = credentials[username];
-  var passwordMatches = basicAuth.safeCompare(password, credentials[username]);
+  console.log(credentials[username + ""]);
+  var userMatches = true; //credentials.hasOwnProperty("" + username);
+  if (credentials[username + ""] === undefined) {
+    return false;
+  }
+  var passwordMatches = basicAuth.safeCompare(
+    password,
+    credentials[username + ""]
+  );
   if (userMatches && passwordMatches) {
+    //currentUserID = username;
     return true;
   }
   return false;
