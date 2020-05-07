@@ -1,33 +1,37 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+<div class="jumbotron jumbotron-fluid bg-secondary">
+        <div class="container">
+          <h1 class="display-4 text-center">Welcome to the main page<h1 id="doctor"></h1></h1>
+          <p class="lead text-white text-left">Search for a patient</p>
+          
+          <nav class="navbar navbar-light bg-secondary">
+            <form class="form-inline">
+             
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary mr-sm-5"  type="submit" id="searchDB">Search</button>
+              <div class="dropdown">
+               
+                <div class="form-group">   
+                    <select class="form-control" id="patientSearch">
+                    <option selected>Choose an search</option>
+                      <option class="searchPatientById">Search patients by id</option>
+                      <option class="searchPatientByDoctorId">Search patients by doctor id</option>
+                      <option class="searchPatientByName">Search patients by name</option>   
+                    </select>
+                  </div>
+              </div>    
+            </form>
+                <form class="form-inline">
+                    <button class="btn btn-success" type="submit" id="addNewPatient">Add a new patient</button>
+                      </form>
+                    </nav>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+      <table class="table">
+          <thead class ="thead-dark" id="patientDb">
+
+          </thead>
+
+      </table>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
