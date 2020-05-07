@@ -1,0 +1,83 @@
+<body id="loginPage">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center"><span class="fas fa-hospital-alt"></span> Welcome!</h1>
+            <hr>
+            <h3 class="text-center">What would you like to do today?</h3>
+            <br>
+            <div class='text-center'>
+                <a href="/">
+                    <button class="btn btn-primary btn-lg"><i class="fas fa-home"></i> Home Page</button>
+                </a>
+                <a href="">
+                    <button class="btn btn-info btn-lg"><i class="fas fa-user-plus"></i> Add a new Patient</button>
+                </a>
+                <a href="">
+                    <button class="btn btn-warning btn-lg"><i class="fas fa-user-lock"></i> Future Admin stuff?</button>
+                </a>
+                <a href="/logout">
+                    <button class="btn btn-danger btn-lg"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </a>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="card-deck">
+                {{!-- Card 1 --}}
+                <div class="card">
+                    <div class="card-header">Search By:</div>
+                    <div class="card-body">
+                        <div class="divSearchMethod">
+                            <select id="searchMethod" class="form-control selectpicker show-tick"
+                                title="Choose a search" data-style="btn-info">
+                                <option value="1">Search Patients by ID</option>
+                                <option value="2">Search Patients by Name</option>
+                                <option value="3">Search Patients by Doctor ID</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="divSearchPatientID">
+                            <select id="searchPatientID" class="form-control selectpicker show-tick"
+                                title="Choose a Patient ID" data-style="btn-info" data-live-search="true">
+                                {{#each patients}}
+                                <option value={{this.dataValues.id}}>{{this.dataValues.id}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="divSearchPatientName">
+                            <select id="searchPatientName" class="form-control selectpicker show-tick"
+                                title="Choose a Patient Name" data-style="btn-info" data-live-search="true">
+                                {{#each patients}}
+                                <option value={{this.dataValues.id}}>{{this.dataValues.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="divSearchPatientDoctorID">
+                            <select id="searchPatientDoctorID" class="form-control selectpicker show-tick"
+                                title="Choose a Doctor ID" data-style="btn-info" data-live-search="true">
+                                {{#each patients}}
+                                <option value={{this.dataValues.id}}>{{this.dataValues.DoctorId}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {{!-- Card 2 --}}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Results Page?</h5>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="footer">
+            <footer>
+                <a href="https://github.com/benjamintownsend02/UntitledProj2">Github Repo</a>
+            </footer>
+        </div>
+    </div>
+
+    <script src="/js/searchby.js"></script>
+
+</body>
