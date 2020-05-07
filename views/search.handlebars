@@ -1,4 +1,11 @@
 <div class="jumbotron jumbotron-fluid bg-secondary">
+
+
+  <div class="nav">
+    <ul class="nav-item">
+      <a class="nav-link active" href="#"> Log out</a>
+    </ul>
+  </div>
   <div class="container">
     <h1 class="display-4 text-center">Welcome to the main page<h1 id="doctor"></h1>
     </h1>
@@ -7,16 +14,20 @@
     <nav class="navbar navbar-light bg-secondary">
       <form class="form-inline">
 
+
         <input class="form-control mr-sm-2" id="inputSearch" type="text" placeholder="Search" aria-label="Search">
+
         <button class="btn btn-primary mr-sm-5" type="submit" id="searchDB">Search</button>
         <div class="dropdown">
 
           <div class="form-group">
             <select class="form-control" id="patientSearch">
               <option selected>Choose an search</option>
+
               <option value="1">Search patients by id</option>
               <option value="2">Search patients by doctor id</option>
               <option value="3">Search patients by name</option>
+
             </select>
           </div>
         </div>
@@ -33,6 +44,7 @@
   </thead>
 
 </table>
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
@@ -75,3 +87,4 @@
   } )
 
 </script>
+
