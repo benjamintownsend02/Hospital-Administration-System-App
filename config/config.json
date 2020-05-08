@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Eliking2014",
+    "password": "password",
     "database": "medicaldb",
 
     "host": "localhost",

@@ -43,7 +43,20 @@
 </div>
 <table class="table">
   <thead class="thead-dark" id="patientDb">
-
+      <tr>
+        <th>Patient ID</th>
+        <th>Patient Name</th>
+        <th>Patient DoctorID</th>
+        <th>Search Button</th>
+      </tr>
+      {{#each patients}}
+      <tr>
+        <td>{{this.dataValues.id}}</td>
+        <td>{{this.dataValues.name}}</td>
+        <td>{{this.dataValues.DoctorId}}</td>
+        <td><button data-patientid="{{this.dataValues.id}}" class="view-patient">View Records</button></td>
+      </tr>
+      {{/each}}
   </thead>
 
 </table>
@@ -53,9 +66,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script type="text/javascript">
-
   $( document ).ready( function ()
   {
+    $(".view-patient").on("click", function(event) {
+        var id = $(this).data("patientid");
+        location.replace( '/displayrec/id/' + id );
+    });
 
 
     $( "#searchDB" ).on( "click", function ()
@@ -69,7 +85,7 @@
       {
         patientId = $( "#inputSearch" ).val().trim();
         console.log( "PatientID ", patientId )
-        location.replace( '/displayrec/id/' + patientId )
+        location.replace( '/search/id/' + patientId )
 
       } else if ( searchType === "2" )
       {
