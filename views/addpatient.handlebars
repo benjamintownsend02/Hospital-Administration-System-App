@@ -3,21 +3,21 @@
 <div class="jumbotron bg-secondary">
      <h1 class="display-4">Add new patient to the system!</h1>
         
-<form>
+<form id ="postForm" method="post">
   <div class="form-group row-sm">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Paient Name</label>
+    <label for="inputEmail3" id="patientName" class="col-sm-2 col-form-label">Paient Name</label>
    
       <input type="text" class="form-control" id="patientName">
     
   </div>
   <div class="form-group row-sm">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Doctor #Id </label>
+    <label for="inputPassword3" id="doctorId" class="col-sm-2 col-form-label">Doctor #Id </label>
     
       <input type="text" class="form-control" id="doctorId">
     
   </div>
   <div class="form-group row-sm">
-  <label for="validationTextarea">Medical history</label>
+  <label for="validationTextarea" id="medicalHistory">Medical history</label>
     <textarea class="form-control" id="medicalHistory" placeholder="Required example textarea"></textarea>
   </div>
   <div class="form-group row">
