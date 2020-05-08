@@ -17,5 +17,3 @@ INSERT INTO Patients (name, medicalHistory, DoctorId ) VALUES ('Clementine Rodge
 INSERT INTO Patients (name, medicalHistory, DoctorId ) VALUES ('Gregory Williams', "Goes by Butch", 1);
 INSERT INTO Patients (name, medicalHistory, DoctorId ) VALUES ('Cane Goose', "Has allergies", 2);
 
-
-
