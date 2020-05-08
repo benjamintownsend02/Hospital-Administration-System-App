@@ -16,6 +16,7 @@ module.exports = function(app) {
     medicaldb.Patient.findOne({ where: { id: req.params.id } }).then(function(
       results
     ) {
+      
       res.json(results);
     });
   });
