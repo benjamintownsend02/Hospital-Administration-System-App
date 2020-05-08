@@ -7,8 +7,9 @@ module.exports = function (app) {
   });
 
   //Display all patients
-  app.get("/search", function (req, res) {
-    medicaldb.Patient.findAll({}).then(function (results) {
+
+  app.get("/search/all", function(req, res) {
+    medicaldb.Patient.findAll({}).then(function(results) {
       var hbsObject = {
         patients: results
       };
@@ -17,34 +18,42 @@ module.exports = function (app) {
   });
 
   //Display patient data by name
-  app.get("/search/:name", function (req, res) {
-    medicaldb.Patient.findAll({
-      where: {
-        name: req.params.name
+  app.get("/search/:name", function(req, res) {
+    medicaldb.Patient.findAll({ where: { name: req.params.name } }).then(
+      function(results) {
+        var hbsObject = {
+          patients: results
+        };
+        res.render("search", hbsObject);
       }
-    }).then(function (
-      results
-    ) {
+    );
+  });
+
+  app.get("/search/doctorId/:doctorId", function(req, res) {
+    medicaldb.Patient.findAll({
+      where: { doctorId: req.params.doctorId }
+    }).then(function(results) {
       var hbsObject = {
         patients: results
       };
-      res.render("displayrec", hbsObject);
+      res.render("search", hbsObject);
     });
   });
 
-  app.get("/search/doctorId/:doctorId", function (req, res) {
+  app.get("/search/id/:id", function(req, res) {
     medicaldb.Patient.findAll({
-      where: {
-        doctorId: req.params.doctorId
-      }
-    }).then(function (results) {
+      where: { id: req.params.id }
+    }).then(function(results) {
       var hbsObject = {
         patients: results
       };
-      res.render("displayrec", hbsObject);
+      res.render("search", hbsObject);
     });
   });
 
+  app.get("/search/", function(req, res) {
+    res.render("search");
+  });
 
   //Display patient data
   app.get("/displayrec/", function (req, res) {
