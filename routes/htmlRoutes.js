@@ -67,7 +67,7 @@ module.exports = function (app) {
 
   //Display patient data by ID
   app.get("/displayrec/id/:id", function (req, res) {
-    medicaldb.Patient.findOne({
+    medicaldb.Patient.findAll({
       where: {
         id: req.params.id
       }
