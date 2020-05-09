@@ -66,38 +66,55 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script type="text/javascript">
-  $(document).ready(function () {
-    $(".view-patient").on("click", function (event) {
-      var id = $(this).data("patientid");
-      location.replace('/displayrec/id/' + id);
-    });
+  $( document ).ready( function ()
+  {
+    $( ".view-patient" ).on( "click", function ( event )
+    {
+      var id = $( this ).data( "patientid" );
+      location.replace( '/displayrec/id/' + id );
+    } );
 
 
-    $("#searchDB").on("click", function () {
+    $( "#searchDB" ).on( "click", function ()
+    {
       event.preventDefault()
 
 
-      var searchType = $("#patientSearch").val();
-      console.log("Search Type ", searchType)
-      if (searchType === "1") {
-        patientId = $("#inputSearch").val().trim();
-        console.log("PatientID ", patientId)
-        location.replace('/search/id/' + patientId)
+      var searchType = $( "#patientSearch" ).val();
+      console.log( "Search Type ", searchType )
+      if ( searchType === "1" )
+      {
+        patientId = $( "#inputSearch" ).val().trim();
+        console.log( "PatientID ", patientId )
+        location.replace( '/search/id/' + patientId )
 
-      } else if (searchType === "2") {
-        var doctorId = $("#inputSearch").val().trim();
-        console.log("Doc ID ", doctorId)
-        location.replace("/search/doctorId/" + doctorId)
-      } else if (searchType === "3") {
-        var patientName = $("#inputSearch").val();
-        console.log("Doc ID ", patientName)
-        location.replace("/search/" + patientName)
-      } else {
-        console.log("Its not working")
+      } else if ( searchType === "2" )
+      {
+        var doctorId = $( "#inputSearch" ).val().trim();
+        console.log( "Doc ID ", doctorId )
+        location.replace( "/search/doctorId/" + doctorId )
+      } else if ( searchType === "3" )
+      {
+        var patientName = $( "#inputSearch" ).val();
+        console.log( "Doc ID ", patientName )
+        location.replace( "/search/" + patientName )
+      } else
+      {
+        console.log( "Its not working" )
       }
 
 
-    })
-  })
+    } )
+
+
+    $( "#addNewPatient" ).on( "click", function ()
+    {
+      event.preventDefault()
+      location.replace( "/addpatient/" )
+    } )
+
+
+
+  } )
 
 </script>
