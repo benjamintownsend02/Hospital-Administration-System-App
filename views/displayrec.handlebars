@@ -12,10 +12,34 @@
           <button class="btn btn-danger" type="submit" id="addNewPatient">Add a new patient</button>
         </form>
         </nav>
-
-
-
     </div>
   </div>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/js/index.js"></script>
+</div>
+<table class="table">
+  <thead class="thead-dark" id="patientDb">
+    <tr>
+      <th>Patient ID</th>
+      <th>Patient Name</th>
+      <th>Patient DoctorID</th>
+      <th>Medical History</th>
+      <th>Edit Button</th>
+    </tr>
+    {{#each patients}}
+    <tr>
+      <td>{{this.dataValues.id}}</td>
+      <td>{{this.dataValues.name}}</td>
+      <td>{{this.dataValues.DoctorId}}</td>
+      <td>{{this.dataValues.medicalHistory}}</td>
+      <td><button data-patientid="{{this.dataValues.id}}" class="edit-patient">Edit Records</button></td>
+    </tr>
+    {{/each}}
+  </thead>
+
+</table>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+<script type="text/javascript">
+
+
+</script>
