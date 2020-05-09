@@ -22,38 +22,38 @@
       <th>Patient Name</th>
       <th>Patient DoctorID</th>
       <th>Medical History</th>
-      <th>Edit Records</th>
     </tr>
+  </thead>
+  <tbody>
     {{#each patients}}
     <tr>
-      <td>{{this.dataValues.id}}</td>
+      <td id="patient-id">{{this.dataValues.id}}</td>
       <td>{{this.dataValues.name}}</td>
       <td>{{this.dataValues.DoctorId}}</td>
       <td id="currentMedHist">{{this.dataValues.medicalHistory}}</td>
-      <td>
-        <textarea name="" id="edit-patient" cols="30" rows="3">{{this.dataValues.medicalHistory}}</textarea>
-        <br>
-        <button data-patientid="{{this.dataValues.id}}" class="edit-patient">Edit Button</button>
-      </td>
-
     </tr>
     {{/each}}
-  </thead>
-
+  </tbody>
 </table>
+<div>
+  <textarea name="" id="edit-patient" cols="30" rows="3">{{this.dataValues.medicalHistory}}</textarea>
+  <br>
+  <button data-patientid="{{this.dataValues.id}}" class="edit-patient">Add Record</button>
+</div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="/js/index.js"></script>
 <script type="text/javascript">
-
   $(document).ready(function () {
 
     $(".edit-patient").on("click", function () {
 
-      var id = $(this).attr("data-patientid");
-
+      var id = $("#patient-id").text();
+      var oldRecord = $("#currentMedHist").text();
+      console.log(oldRecord);
+      var newRecord=oldRecord + " || " + $("#edit-patient").val().trim();
       var medicalHistory = {
-        medicalHistory: $("#edit-patient").val().trim()
+        medicalHistory: newRecord
       };
 
       $.ajax("/api/patients/" + id, {
