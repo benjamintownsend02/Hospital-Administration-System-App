@@ -22,15 +22,20 @@
       <th>Patient Name</th>
       <th>Patient DoctorID</th>
       <th>Medical History</th>
-      <th>Edit Button</th>
+      <th>Edit Records</th>
     </tr>
     {{#each patients}}
     <tr>
       <td>{{this.dataValues.id}}</td>
       <td>{{this.dataValues.name}}</td>
       <td>{{this.dataValues.DoctorId}}</td>
-      <td>{{this.dataValues.medicalHistory}}</td>
-      <td><button data-patientid="{{this.dataValues.id}}" class="edit-patient">Edit Records</button></td>
+      <td id="currentMedHist">{{this.dataValues.medicalHistory}}</td>
+      <td>
+        <textarea name="" id="edit-patient" cols="30" rows="3">{{this.dataValues.medicalHistory}}</textarea>
+        <br>
+        <button data-patientid="{{this.dataValues.id}}" class="edit-patient">Edit Button</button>
+      </td>
+
     </tr>
     {{/each}}
   </thead>
@@ -40,6 +45,25 @@
 
 <script src="/js/index.js"></script>
 <script type="text/javascript">
+
+  $(document).ready(function () {
+
+    $(".edit-patient").on("click", function () {
+
+      var id = $(this).attr("data-patientid");
+
+      var medicalHistory = {
+        medicalHistory: $("#edit-patient").val().trim()
+      };
+
+      $.ajax("/api/patients/" + id, {
+        type: "PUT",
+        data: medicalHistory,
+      }).then(function () {
+        location.reload();
+      });
+    });
+  });
 
 
 </script>
