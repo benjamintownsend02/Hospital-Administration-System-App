@@ -4,7 +4,44 @@
 
 footer {
   background-color: black;
-  margin-top: -25px;
-  /* margin-bottom: 0px; */
   text-align: center;
+  padding-top: 20px;
+}
+
+@media only screen and (max-width: 640px) {
+  button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+  }
+
+  #login {
+    margin-bottom: 0px;
+    padding: px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+  }
+
+}
+
+@media only screen and (max-width: 440px) {
+  button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+  }
 }
