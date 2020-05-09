@@ -8,6 +8,9 @@ module.exports = function(app) {
   app.get("/api/patients", function(req, res) {
     medicaldb.Patient.findAll().then(function(results) {
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve patient data.");
     });
   });
 
@@ -18,6 +21,9 @@ module.exports = function(app) {
     ) {
       
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve patient data for this id.");
     });
   });
 
@@ -29,6 +35,9 @@ module.exports = function(app) {
       }
     }).then(function(results) {
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve patient data for this name.");
     });
   });
 
@@ -40,6 +49,9 @@ module.exports = function(app) {
       }
     }).then(function(results) {
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve patient data for this doctorId.");
     });
   });
 
@@ -55,6 +67,9 @@ module.exports = function(app) {
       }
     }).then(function(results) {
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve patient data for this doctorId and name.");
     });
   });
 
@@ -64,7 +79,10 @@ module.exports = function(app) {
       function(results) {
         res.json(results);
       }
-    );
+    ).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve doctor data for this name.");
+    });
   });
 
   //Get doctor by ID
@@ -73,6 +91,9 @@ module.exports = function(app) {
       results
     ) {
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't retrieve doctor data for this id.");
     });
   });
 
@@ -81,6 +102,9 @@ module.exports = function(app) {
     medicaldb.Patient.create(req.body).then(function() {
       console.log("New patient created!");
       res.end();
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't post patient data.");
     });
   });
 
@@ -92,6 +116,9 @@ module.exports = function(app) {
     ).then(function(){
       console.log("Patient records updated!");
       res.end();
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't update patient data.");
     });
   });
 
@@ -118,6 +145,9 @@ module.exports = function(app) {
       results
     ) {
       res.json(results);
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't delete patient data.");
     });
   });
 };

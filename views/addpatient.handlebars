@@ -47,7 +47,7 @@
         info.DoctorId === "" ||
         info.medicalHistory === ""
       ) {
-        console.log("Form Incomplete. Please Try Again");
+        alert("Form Incomplete. Please Try Again");
       }
       else {
         $.ajax("/api/patients", {
@@ -55,7 +55,11 @@
           data: info
         }).then(function (data) {
           //console.log(data);
-          console.log("Succesfully added to the database");
+          alert("Patient succesfully added to the database.");
+          location.reload();
+        }).catch(function(err){
+          console.log("Error: " + err);
+          alert("Couldn't post patient data.");
         });
       }
     });
