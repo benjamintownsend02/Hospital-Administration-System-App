@@ -15,28 +15,38 @@
     </div>
   </div>
 </div>
+{{#each patients}}
 <table class="table">
   <thead class="thead-dark" id="patientDb">
     <tr>
       <th>Patient ID</th>
       <th>Patient Name</th>
       <th>Patient DoctorID</th>
-      <th>Medical History</th>
     </tr>
   </thead>
   <tbody>
-    {{#each patients}}
     <tr>
       <td id="patient-id">{{this.dataValues.id}}</td>
       <td>{{this.dataValues.name}}</td>
       <td>{{this.dataValues.DoctorId}}</td>
-      <td id="currentMedHist">{{this.dataValues.medicalHistory}}</td>
     </tr>
-    {{/each}}
   </tbody>
 </table>
+<table class="table">
+  <thead class="thead-dark" id="patientDb-record">
+    <tr>
+      <th>Medical History</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="currentMedHist">{{this.dataValues.medicalHistory}}</td>
+    </tr>
+  </tbody>
+</table>
+{{/each}}
 <div>
-  <textarea name="" id="edit-patient" cols="30" rows="3">{{this.dataValues.medicalHistory}}</textarea>
+  <textarea name="" id="edit-patient" cols="30" rows="3" style="width:80%">{{this.dataValues.medicalHistory}}</textarea>
   <br>
   <button data-patientid="{{this.dataValues.id}}" class="edit-patient">Add Record</button>
 </div>
