@@ -51,6 +51,8 @@
       <th>Patient DoctorID</th>
       <th>Search Button</th>
     </tr>
+  </thead>
+  <tbody>
     {{#each patients}}
     <tr>
       <td>{{this.dataValues.id}}</td>
@@ -59,8 +61,7 @@
       <td><button data-patientid="{{this.dataValues.id}}" class="view-patient">View Records</button></td>
     </tr>
     {{/each}}
-  </thead>
-
+  </tbody>
 </table>
 
 
