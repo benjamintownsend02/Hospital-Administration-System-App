@@ -1,3 +1,10 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+footer {
+  background-color: black;
+  margin-top: -25px;
+  /* margin-bottom: 0px; */
+  text-align: center;
+}
