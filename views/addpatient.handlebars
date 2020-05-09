@@ -1,37 +1,41 @@
-
-
 <div class="jumbotron bg-secondary">
-     <h1 class="display-4">Add new patient to the system!</h1>
-<form id ="postForm">
-  <div class="form-group row-sm">
-    <label for="inputEmail3" id="patientName" class="col-sm-2 col-form-label">Patient Name</label>
-   
+  {{!-- added home link --}}
+  <div class="nav">
+    <ul class="nav-item">
+      <a class="nav-link active" href="/"> Home</a>
+    </ul>
+  </div>
+  <h1 class="display-4">Add new patient to the system!</h1>
+  <form id="postForm">
+    <div class="form-group row-sm">
+      <label for="inputEmail3" id="patientName" class="col-sm-2 col-form-label">Patient Name</label>
+
       <input type="text" class="form-control" id="patientName" name="name-patientName">
-    
-  </div>
-  <div class="form-group row-sm">
-    <label for="inputPassword3" id="doctorId" class="col-sm-2 col-form-label">Doctor Id # </label>
-    
-      <input type="text" class="form-control" id="doctorId" name="name-doctorId">
-    
-  </div>
-  <div class="form-group row-sm">
-  <label for="validationTextarea" id="medicalHistory">Medical history</label>
-    <textarea class="form-control" id="medicalHistory" name="name-medicalHistory"></textarea>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary" id="addNewPatient">Add patient</button>
+
     </div>
-  </div>
-</form>
+    <div class="form-group row-sm">
+      <label for="inputPassword3" id="doctorId" class="col-sm-2 col-form-label">Doctor Id # </label>
+
+      <input type="text" class="form-control" id="doctorId" name="name-doctorId">
+
+    </div>
+    <div class="form-group row-sm">
+      <label for="validationTextarea" id="medicalHistory">Medical history</label>
+      <textarea class="form-control" id="medicalHistory" name="name-medicalHistory"></textarea>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary" id="addNewPatient">Add patient</button>
+      </div>
+    </div>
+  </form>
 
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-      //console.log("ready");
-    $("#addNewPatient").on("click", function() {
+  $(document).ready(function () {
+    //console.log("ready");
+    $("#addNewPatient").on("click", function () {
       event.preventDefault();
       var info = {
         name: $("#postForm [name=name-patientName]").val().trim(),
@@ -39,17 +43,17 @@
         medicalHistory: $("#postForm [name=name-medicalHistory]").val()
       }
       if (
-        info.name==="" ||
-        info.DoctorId==="" ||
-        info.medicalHistory===""
+        info.name === "" ||
+        info.DoctorId === "" ||
+        info.medicalHistory === ""
       ) {
         console.log("Form Incomplete. Please Try Again");
       }
-      else{
-        $.ajax("/api/patients",{
+      else {
+        $.ajax("/api/patients", {
           type: "POST",
           data: info
-        }).then(function(data) {
+        }).then(function (data) {
           //console.log(data);
           console.log("Succesfully added to the database");
         });
