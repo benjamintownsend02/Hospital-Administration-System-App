@@ -137,6 +137,9 @@ module.exports = function (app) {
     }).then(function () {
       console.log("Patient records updated!");
       res.status(200).end();
+    }).catch(function(err){
+      console.log("Error: " + err);
+      console.log("Couldn't update patient data.");
     });
   });
 
