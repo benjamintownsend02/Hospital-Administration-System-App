@@ -142,7 +142,12 @@ module.exports = function (app) {
       console.log("Couldn't update patient data.");
     });
   });
-
+  /*
+  app.put("/api/logout", function(req, res) {
+    res.set("WWW-Authenticate", "Basic realm='401'");
+    res.status(401).send("Authentication required.");
+  });
+  */
   //DEPRECATED
   /*
   //Add new patient to doctor

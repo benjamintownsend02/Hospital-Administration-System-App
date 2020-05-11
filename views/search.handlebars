@@ -5,21 +5,14 @@
     </div>
     <div class="col-sm-10 "></div>
     <div class="col-sm-1 ">
-      <a href="/logout"><button class="btn btn-danger mr-sm-5" id="logout">Log Out</button></a>
+      <a href="/logout"></a><button class="btn btn-danger mr-sm-5" id="logout">Log Out</button></a>
     </div>
   </div>
 </div>
 <div class="jumbotron jumbotron-fluid bg-transparent">
-
-  {{!-- Logout Button --}}
-
-
-
-
   <div class="container">
-    <h1 class="display-4 text-center font-weight-bold">Welcome to the main page<h1 id="doctor"></h1>
+    <h1 class="display-4 text-center font-weight-bold bg-dark text-light">Patient Lookup<h1 id="doctor"></h1>
     </h1>
-    <p class="h3 text-black text-center">Search for a patient</p>
 
     <nav class="navbar navbar-light">
       <form class="form-inline">
@@ -77,6 +70,16 @@
 <script src="/js/index.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
+    /*
+    $("#logout").on("click", function(event){
+      $.ajax("/api/logout/", {
+        type: "PUT"
+      }).then(function () {
+        location.reload();
+      });
+    });
+    */
+
     $(".view-patient").on("click", function (event) {
       var id = $(this).data("patientid");
       location.replace('/displayrec/id/' + id);
