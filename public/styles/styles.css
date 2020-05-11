@@ -1,3 +1,57 @@
+body {
+  background-image: url("/img/HospitalBG.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+#addNewPatient {
+  margin-left: 40px;
+}
+
+#inputSearch::placeholder {
+  color: white !important;
+  opacity: 1;
+}
+
+#inputSearch:not(:placeholder-shown) {
+  color: white !important;
+}
+
+#patientSearch {
+  color: white !important;
+}
+
+#patientName::placeholder {
+  color: white !important;
+}
+
+#patientName:not(:placeholder-shown) {
+  color: white !important
+}
+
+#doctorId::placeholder {
+  color: white !important;
+}
+
+#doctorId:not(:placeholder-shown) {
+  color: white !important
+}
+
+#medicalHistory::placeholder {
+  color: white !important;
+}
+
+#medicalHistory:not(:placeholder-shown) {
+  color: white !important
+}
+
+
+
+
+
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -38,10 +92,50 @@ footer {
 
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 400px) {
   button {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 10px;
+  }
+
+  body {
+    background-repeat: repeat;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #patientName {
+    margin-left: 40px;
+    width: 95%;
+  }
+
+  #doctorId {
+    margin-left: 40px;
+    width: 95%;
+  }
+
+  #medicalHistory {
+    margin-left: 40px;
+    width: 95%;
+  }
+
+
+}
+
+@media only screen and (min-width:1281px) {
+  #patientName {
+    margin-left: 40px;
+    width: 95%;
+  }
+
+  #doctorId {
+    margin-left: 40px;
+    width: 95%;
+  }
+
+  #medicalHistory {
+    margin-left: 40px;
+    width: 95%;
   }
 }
