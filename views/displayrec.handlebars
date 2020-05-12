@@ -61,26 +61,36 @@
 
 <script src="/js/index.js"></script>
 <script type="text/javascript">
-  $(document).ready(function () {
+  $( document ).ready( function ()
+  {
 
-    $(".edit-patient").on("click", function () {
+    $( ".edit-patient" ).on( "click", function ()
+    {
 
-      var id = $("#patient-id").text();
-      var oldRecord = $("#currentMedHist").text();
-      console.log(oldRecord);
-      var newRecord=oldRecord + " || " + $("#edit-patient").val().trim();
+      var id = $( "#patient-id" ).text();
+      var oldRecord = $( "#currentMedHist" ).text();
+      console.log( oldRecord );
+      var newRecord = oldRecord + " || " + $( "#edit-patient" ).val().trim();
       var medicalHistory = {
         medicalHistory: newRecord
       };
 
-      $.ajax("/api/patients/" + id, {
+      $.ajax( "/api/patients/" + id, {
         type: "PUT",
         data: medicalHistory,
-      }).then(function () {
+      } ).then( function ()
+      {
         location.reload();
-      });
-    });
-  });
+      } );
+    } );
+
+    $( "#addNewPatient" ).on( "click", function ()
+    {
+      event.preventDefault()
+      location.replace( "/addpatient/" )
+    } )
+
+  } );
 
 
 </script>
