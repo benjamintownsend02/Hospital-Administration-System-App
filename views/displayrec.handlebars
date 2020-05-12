@@ -14,11 +14,18 @@
     <div class="container">
       <h1 class="display-4 text-center">Patient Records<h1 id="doctor"></h1>
 
+        <div class="text-center">
 
-        <form class="form-inline">
-          <button class="btn btn-danger" type="submit" id="addNewPatient">Add a new patient</button>
-        </form>
-        </nav>
+
+          <a href="/addpatient"> <button class="btn btn-danger" type="submit" id="addNewPatient">Add a new
+              patient</button></a>
+
+
+          <a href="/search"><button class="btn btn-primary"><span class="fas fa-search"></span>Search for a
+              Patient</button></a>
+
+
+        </div>
     </div>
   </div>
 </div>
@@ -61,36 +68,29 @@
 
 <script src="/js/index.js"></script>
 <script type="text/javascript">
-  $( document ).ready( function ()
-  {
+  $(document).ready(function () {
 
-    $( ".edit-patient" ).on( "click", function ()
-    {
+    $(".edit-patient").on("click", function () {
 
-      var id = $( "#patient-id" ).text();
-      var oldRecord = $( "#currentMedHist" ).text();
-      console.log( oldRecord );
-      var newRecord = oldRecord + " || " + $( "#edit-patient" ).val().trim();
+      var id = $("#patient-id").text();
+      var oldRecord = $("#currentMedHist").text();
+      console.log(oldRecord);
+      var newRecord = oldRecord + " || " + $("#edit-patient").val().trim();
       var medicalHistory = {
         medicalHistory: newRecord
       };
 
-      $.ajax( "/api/patients/" + id, {
+      $.ajax("/api/patients/" + id, {
         type: "PUT",
         data: medicalHistory,
-      } ).then( function ()
-      {
+      }).then(function () {
         location.reload();
-      } );
-    } );
+      });
+    });
 
-    $( "#addNewPatient" ).on( "click", function ()
-    {
-      event.preventDefault()
-      location.replace( "/addpatient/" )
-    } )
 
-  } );
+
+  });
 
 
 </script>
