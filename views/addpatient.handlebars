@@ -58,13 +58,18 @@
         $.ajax("/api/patients", {
           type: "POST",
           data: info
-        }).then(function (data) {
-          //console.log(data);
-          alert("Patient succesfully added to the database.");
-          location.reload();
+        }).then(function (res) {
+          if(res.success)
+          {
+            alert("Patient succesfully added to the database.");
+            location.reload();
+          }
+          else
+          {
+            alert("Couldn't post patient data. Please enter valid data.");
+          }
         }).catch(function (err) {
           console.log("Error: " + err);
-          alert("Couldn't post patient data.");
         });
       }
     });

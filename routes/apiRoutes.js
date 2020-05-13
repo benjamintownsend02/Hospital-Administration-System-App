@@ -118,10 +118,11 @@ module.exports = function (app) {
   app.post("/api/patients", function (req, res) {
     medicaldb.Patient.create(req.body).then(function () {
       console.log("New patient created!");
-      res.end();
+      res.json({success: true});
     }).catch(function(err){
       console.log("Error: " + err);
-      console.log("Couldn't post patient data.");
+      console.log("Couldn't post patient data. Please enter valid data.");
+      res.json({success: false});
     });
   });
 
@@ -142,30 +143,11 @@ module.exports = function (app) {
       console.log("Couldn't update patient data.");
     });
   });
-  /*
-  app.put("/api/logout", function(req, res) {
-    res.set("WWW-Authenticate", "Basic realm='401'");
-    res.status(401).send("Authentication required.");
-  });
-  */
-  //DEPRECATED
-  /*
-  //Add new patient to doctor
-  app.put("/api/doctors", function(req, res) {
-    medicaldb.Doctor.update(
-      {patients: req.body.patients},
-      {where: {id:req.body.id}
-    }).then(function(results){
-      console.log("Doctor patient records updated!");
-      res.end();
-    });
-  });
-  */
-
-
 
   // Delete Patient from Records
-  //TODO/NOTE: WE PROBABLY DON'T WANT TO INCLUDE THIS FUNCTIONALITY FOR THE END USER
+  //NOTE: WE PROBABLY DON'T WANT TO INCLUDE THIS FUNCTIONALITY FOR THE END USER
+  //Commented out for now
+  /*
   app.delete("/api/patients/:id", function (req, res) {
     medicaldb.Patient.destroy({
       where: {
@@ -180,4 +162,5 @@ module.exports = function (app) {
       console.log("Couldn't delete patient data.");
     });
   });
+  */
 };

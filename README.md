@@ -29,4 +29,4 @@
 
 
 [Go to General Patient Care](insertlink)
-[GitHub Repository](https://github.com/benjamintownsend02/UntitledProj2)
+[GitHub Repository]https://github.com/benjamintownsend02/Hospital-Administration-System-App)
