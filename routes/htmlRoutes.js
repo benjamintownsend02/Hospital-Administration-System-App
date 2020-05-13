@@ -7,7 +7,6 @@ module.exports = function(app) {
   });
 
   //Display all patients
-
   app.get("/search/all", function(req, res) {
     medicaldb.Patient.findAll({})
       .then(function(results) {
@@ -39,6 +38,7 @@ module.exports = function(app) {
       });
   });
 
+  //Display search by doctorId
   app.get("/search/doctorId/:doctorId", function(req, res) {
     medicaldb.Patient.findAll({
       where: {
@@ -56,6 +56,7 @@ module.exports = function(app) {
       });
   });
 
+  //Display search by id
   app.get("/search/id/:id", function(req, res) {
     medicaldb.Patient.findAll({
       where: {
@@ -73,6 +74,7 @@ module.exports = function(app) {
       });
   });
 
+  //Display search page
   app.get("/search/", function(req, res) {
     res.render("search");
   });
@@ -105,27 +107,18 @@ module.exports = function(app) {
       });
   });
 
+  //Logout
   app.get("/logout", function(req, res) {
-    res.set("WWW-Authenticate", "Basic realm='401'");
-    res.status(401).send("Authentication required.");
-    // res.redirect("/");
+    delete req.session.authStatus;
+    res.send(
+      [
+        "You are now logged out.",
+        "<br>",
+        "<a href='/'>Return to home page.</a>"
+      ].join("")
+    );
   });
 
-  //TODO: DEPRECATED
-  /*
-  app.get("/logout", function(req, res, next) {
-    if (req.session) {
-      // delete session object
-      req.session.destroy(function(err) {
-        if (err) {
-          return next(err);
-        } else {
-          return res.redirect("/");
-        }
-      });
-    }
-  });
-  */
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

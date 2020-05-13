@@ -3,43 +3,33 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var basicAuth = require("express-basic-auth");
+var session = require("express-session");
+var cookieParser = require("cookie-parser");
 // Test
 var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
-//TODO: Fix? or Remove after Testing
-/*
-var credentials = { admin: "guest" };
 
-var currentUserID="";
-*/
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(cookieParser());
+app.use(session({ secret: "It's only a model" }));
 
-//TODO: Remove when done testing
-//TODO: FIX?
-/*
-app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
-function myAuthorizer(username, password) {
-  console.log(credentials[username + ""]);
-  var userMatches = true; //credentials.hasOwnProperty("" + username);
-  if (credentials[username + ""] === undefined) {
-    return false;
+//Authentication
+app.use(function(req, res, next) {
+  if (!req.session.authStatus || "loggedOut" === req.session.authStatus) {
+    req.session.authStatus = "loggingIn";
+    req.user = false;
+    req.remoteUser = false;
+    if (req.headers && req.headers.authorization) {
+      delete req.headers.authorization;
+    }
   }
-  var passwordMatches = basicAuth.safeCompare(
-    password,
-    credentials[username + ""]
-  );
-  if (userMatches && passwordMatches) {
-    //currentUserID = username;
-    return true;
-  }
-  return false;
-}
-*/
+  next();
+});
 
 app.use(
   basicAuth({
@@ -53,16 +43,21 @@ app.use(
   })
 );
 
-//TODO: Remove when done testing
+//Alternate Authentication
 /*
-function getUnauthorizedResponse(req) {
-  //TODO: Remove console log after testing
-  console.log(req);
-  return req.auth
-    ? "Credentials " + req.auth.user + ":" + req.auth.password + " rejected"
-    : "No credentials provided";
+app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
+
+function myAuthorizer(username, password) {
+  var userMatches = basicAuth.safeCompare(username, "admin");
+  var passwordMatches = basicAuth.safeCompare(password, "guest");
+  return userMatches & passwordMatches;
 }
 */
+app.use(function(req, res, next) {
+  req.session.authStatus = "loggedIn";
+  next();
+});
+
 // Handlebars
 app.engine(
   "handlebars",
